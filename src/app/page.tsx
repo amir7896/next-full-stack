@@ -6,11 +6,7 @@ export default function Home() {
       <Typography variant="h4" color="primary">
         Welcome to the Home Page
       </Typography>
-      <Button
-        variant="contained"
-        color="secondary"
-        style={{ marginTop: "1rem" }}
-      >
+      <Button variant="contained" color="primary" style={{ marginTop: "1rem" }}>
         Click Me
       </Button>
     </div>
