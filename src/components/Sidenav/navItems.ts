@@ -4,8 +4,9 @@ import InfoIcon from "@mui/icons-material/Info";
 
 interface NavItem {
   label: string;
-  href: string;
+  href?: string; // Optional for items with sublist
   icon: SvgIconComponent;
+  children?: NavItem[]; // Sublist items
 }
 
 export const navItems: NavItem[] = [
@@ -16,7 +17,7 @@ export const navItems: NavItem[] = [
   },
   {
     label: "About",
-    href: "/about",
     icon: InfoIcon,
+    href: "/about",
   },
 ];

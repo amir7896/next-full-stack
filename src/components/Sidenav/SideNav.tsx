@@ -40,9 +40,18 @@ const SideNav: React.FC<SideNavProps> = ({ mobileOpen, onClose }) => {
                   key={item.label}
                   href={item.href}
                   icon={item.icon}
-                  label={item.label} // Ensure label is passed
+                  label={item.label}
                   onClick={onClose}
-                />
+                >
+                  {item.children?.map((child) => (
+                    <SideNavItem
+                      key={child.label}
+                      href={child.href}
+                      icon={child.icon}
+                      label={child.label}
+                    />
+                  ))}
+                </SideNavItem>
               ))}
             </List>
           </Box>
@@ -61,14 +70,23 @@ const SideNav: React.FC<SideNavProps> = ({ mobileOpen, onClose }) => {
         >
           <Box>
             <Toolbar />
-            <List>
+            <List sx={{ padding: "4px" }}>
               {navItems.map((item) => (
                 <SideNavItem
                   key={item.label}
                   href={item.href}
                   icon={item.icon}
-                  label={item.label} // Ensure label is passed
-                />
+                  label={item.label}
+                >
+                  {item.children?.map((child) => (
+                    <SideNavItem
+                      key={child.label}
+                      href={child.href}
+                      icon={child.icon}
+                      label={child.label}
+                    />
+                  ))}
+                </SideNavItem>
               ))}
             </List>
           </Box>
