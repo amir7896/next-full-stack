@@ -7,6 +7,7 @@ import {
   List,
   Typography,
   useTheme,
+  Box,
 } from "@mui/material";
 import { ExpandMore, ChevronRight } from "@mui/icons-material";
 import { usePathname } from "next/navigation";
@@ -83,6 +84,7 @@ export const SideNavItem: React.FC<SideNavItemProps> = ({
             display: "flex",
             alignItems: "center",
             margin: 0,
+            cursor: "pointer",
           }}
           primary={
             <Typography
@@ -98,19 +100,32 @@ export const SideNavItem: React.FC<SideNavItemProps> = ({
           }
         />
         {hasChildren && (
-          <ListItemIcon
+          <Box
             sx={{
-              marginLeft: "auto", // Align arrow icon to the far right
+              marginLeft: "auto",
+              display: "flex",
+              alignItems: "center",
               color: isActive ? "#fff" : "inherit",
             }}
           >
             {open ? <ExpandMore /> : <ChevronRight />}
-          </ListItemIcon>
+          </Box>
         )}
       </ListItem>
       {hasChildren && (
         <Collapse in={open} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
+          <List
+            component="div"
+            disablePadding
+            sx={{
+              width: {
+                xs: "215px", // Width for extra-small screens
+                sm: "215px", // Width for small screens
+                md: "210px", // Width for medium and larger screens
+              },
+              marginLeft: "20px", // Applied universally
+            }}
+          >
             {React.Children.map(children, (child) =>
               React.cloneElement(child as React.ReactElement, {
                 depth: depth + 1, // Increase depth for child items

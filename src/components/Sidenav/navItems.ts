@@ -20,4 +20,20 @@ export const navItems: NavItem[] = [
     icon: InfoIcon,
     href: "/about",
   },
+  {
+    label: "Orders",
+    icon: HomeIcon,
+    children: [
+      {
+        label: "List",
+        icon: HomeIcon,
+        href: "/list",
+      },
+      {
+        label: "Create",
+        icon: HomeIcon,
+        href: "/create",
+      },
+    ],
+  },
 ];
